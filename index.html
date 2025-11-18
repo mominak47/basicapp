@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe App</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body { background-color: #0f172a; color: #1e293b; }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 3px; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script type="text/babel" data-presets="env,react">
+      const { useState, useEffect, useRef, useMemo, useCallback, useContext, useReducer } = React;
+
+      try {
+        const { useState } = React;
+
+// SVG Icon for Plus
+const PlusIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-white"
+  >
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+// SVG Icon for Minus
+const MinusIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-white"
+  >
+    <path d="M5 12h14" />
+  </svg>
+);
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-950 text-white flex flex-col items-center justify-center p-4 font-sans antialiased">
+      <h1 className="text-5xl md:text-6xl font-extrabold text-teal-400 mb-10 drop-shadow-lg text-center leading-tight">
+        Vibe Counter
+      </h1>
+
+      <div className="flex items-center space-x-6 md:space-x-8 bg-slate-800 p-6 md:p-8 rounded-full shadow-2xl border border-slate-700">
+        <button
+          onClick={() => setCount(prev => prev - 1)}
+          className="p-4 md:p-5 rounded-full bg-red-600 hover:bg-red-700 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-opacity-50 flex items-center justify-center"
+          aria-label="Decrement count"
+        >
+          <MinusIcon />
+        </button>
+
+        <span className="text-7xl md:text-8xl font-mono text-white w-28 md:w-36 text-center select-none drop-shadow-md">
+          {count}
+        </span>
+
+        <button
+          onClick={() => setCount(prev => prev + 1)}
+          className="p-4 md:p-5 rounded-full bg-green-600 hover:bg-green-700 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 flex items-center justify-center"
+          aria-label="Increment count"
+        >
+          <PlusIcon />
+        </button>
+      </div>
+
+      <p className="mt-16 text-slate-400 text-sm md:text-base text-center max-w-sm">
+        A basic PWA-ready counter app crafted by VibeCoder. Fast, responsive, and delightful.
+      </p>
+    </div>
+  );
+}
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        if (typeof App !== 'undefined') {
+            root.render(<App />);
+        } else {
+            document.getElementById('root').innerHTML = '<div style="color:red;padding:20px;">Error: App component not found</div>';
+        }
+      } catch (err) {
+        console.error("Runtime Error:", err);
+        document.getElementById('root').innerHTML = '<div style="color:red;padding:20px;">Runtime Error: ' + err.message + '</div>';
+      }
+    </script>
+  </body>
+</html>

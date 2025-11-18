@@ -1,0 +1,7 @@
+{
+  "name": "Vibe App",
+  "short_name": "Vibe",
+  "theme_color": "#0f172a",
+  "background_color": "#0f172a",
+  "display": "standalone"
+}
